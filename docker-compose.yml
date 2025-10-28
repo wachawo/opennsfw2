@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  opennsfw2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: opennsfw2:latest
+    container_name: opennsfw2
+    volumes:
+      - .:/app
+      - ./data:/data
+    environment:
+      - KERAS_BACKEND=tensorflow
+    stdin_open: true
+    tty: true
+    # Uncomment for GPU support
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
